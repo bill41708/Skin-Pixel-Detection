@@ -12,7 +12,7 @@ Labelskin = []
 
 path = './train/'
 
-#取出為skin和不為skin的train data,並分別label為 1和0,存入list
+#take skin and nonskin as train data
 
 for filename in os.listdir(path):
     if(os.path.isfile(path + filename) and not filename.startswith('.')):
@@ -39,7 +39,7 @@ print(Train.shape)
 model = GaussianNB()
 model.fit(Train, Label)
 
-#predict所有的照片並分別印出結果
+#predict all image
 
 path1 = './Faces/'
 for filename in os.listdir(path1):
@@ -87,18 +87,3 @@ for filename in os.listdir(path1):
                 flag = 254
             img1.putpixel((index[i][0], index[i][1]), (flag, flag, flag))
         img1.save('./result/' + filename, "JPEG")
-
-
-'''
-img = Image.open('skin1.jpg')
-print(img.mode)
-w,h = img.size
-print(w,h)
-
-arr = np.array(img)
-print(arr.shape)
-print(arr.dtype)
-#print(arr)
-'''
-
-
